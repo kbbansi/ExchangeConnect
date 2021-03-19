@@ -1,3 +1,5 @@
+package com.tlc.t11.dto;
+
 public class OrderDto {
     private String product;
     private int quantity;
@@ -46,3 +48,4 @@ public class OrderDto {
                 '}';
     }
 }
+

@@ -17,16 +17,4 @@ public class ExchangeConnectivityApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ExchangeConnectivityApplication.class, args);
 	}
-
-	@GetMapping
-	public String indexRoute() {
-		System.out.println("We hit index");
-		return indexController.toString();
-	}
-
-	@GetMapping
-	public List<OrderModel> getOrders(){
-		return exchangeController.getOrders();
-	}
-
 }

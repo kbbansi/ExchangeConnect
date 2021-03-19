@@ -1,15 +1,12 @@
 package com.tlc.t11.Services;
 
 import com.tlc.t11.DataAccess.OrderRepository;
-import com.tlc.t11.ErrorHandlers.NotFound;
 import com.tlc.t11.Models.OrderModel;
 import com.tlc.t11.dto.OrderDto;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
-import java.util.List;
-import java.util.Optional;
+import org.springframework.http.HttpMethod;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 //@Component
 @Service
@@ -26,14 +23,10 @@ public class ExchangeService {
     }
 
     // logic call
-    public OrderModel callMallon(OrderDto orderDto) {
-        System.out.println(orderDto); // write to logs here
-
-        OrderModel orderModel = restTemplate.postForObject("url/api_key/endpoint", requestType, orderDto);
-
-        //response type
-        // publish orderModel to reporting service
-        return orderRepository.save(orderModel);
+    public OrderDto callMallon(OrderDto orderDto) {
+        System.out.println(orderDto);
+        orderDto = restTemplate.postForObject("", HttpMethod.POST, OrderDto.class);
+        return orderDto;
     }
 
     //get method -- retrieve data from database
