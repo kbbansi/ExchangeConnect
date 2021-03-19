@@ -14,28 +14,39 @@ import java.util.List;
 @RequestMapping(path = "api/exchange")
 
 public class ExchangeController {
+    @Autowired
     private final ExchangeService exchangeService;
-    private ApiResponses apiResponses;
+
+    
+   
+    
+    // private ApiResponses apiResponses; // custom class
 
     @Autowired
     public ExchangeController(ExchangeService exchangeService){
         this.exchangeService = exchangeService;
     }
 
-    @GetMapping
-    public List<OrderModel> getOrders() {
-        return exchangeService.getOrders();
-    }
+    // @PostMapping("/mallon")
+    // public void connectToExchange(OrderModel orderModel) {
+    //     exchangeService.callMallon(orderModel);
+    //     // restTemplate.postForObject("url/api_key/orderbook", requestType, orderModel.class);
+    // }
 
-    @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping
-    @ResponseBody
-    public ApiResponses saveOrder(@RequestBody OrderModel orderModel){
-        //sanitization checks
-        System.out.println(orderModel.toString());
-        exchangeService.saveOrder(orderModel);
+    // @GetMapping
+    // public List<OrderModel> getOrders() {
+    //     return exchangeService.getOrders();
+    // }
 
-        apiResponses = new ApiResponses("Order Created", 201);
-        return apiResponses;
-    }
+    // @ResponseStatus(HttpStatus.CREATED)
+    // @PostMapping
+    // @ResponseBody
+    // public ApiResponses saveOrder(@RequestBody OrderModel orderModel){
+    //     //sanitization checks
+    //     System.out.println(orderModel.toString());
+    //     exchangeService.saveOrder(orderModel);
+
+    //     apiResponses = new ApiResponses("Order Created", 201);
+    //     return apiResponses;
+    // }
 }

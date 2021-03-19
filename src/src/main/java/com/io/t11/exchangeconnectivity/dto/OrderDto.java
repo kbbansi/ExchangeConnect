@@ -1,44 +1,10 @@
-package com.tlc.t11.Models;
+package com.io.t11.exchangeconnectivity.dto;
 
-import javax.persistence.*;
-
-@Entity
-@Table
-public class OrderModel {
-    @Id
-    @SequenceGenerator(
-            name = "order_sequence",
-            sequenceName = "order_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "order_sequence"
-    )
-    private Long id;
+public class OrderDto {
     private String product;
     private int quantity;
     private double price;
     private String side;
-    private String uid;
-
-    public OrderModel(Long id, String product, int quantity, double price, String side) {
-        this.id = id;
-        this.product = product;
-        this.quantity = quantity;
-        this.price = price;
-        this.side = side;
-    }
-
-    public OrderModel() {}
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getProduct() {
         return product;
@@ -70,14 +36,6 @@ public class OrderModel {
 
     public void setSide(String side) {
         this.side = side;
-    }
-
-    public String getuid() {
-        return uid;
-    }
-
-    public void setuid(String uid) {
-        this.uid = uid;
     }
 
     @Override

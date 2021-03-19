@@ -1,20 +1,12 @@
-package com.tlc.t11.Models;
+package com.io.t11.exchangeconnectivity.dto;
 
 import javax.persistence.*;
 
 @Entity
 @Table
-public class OrderModel {
+public class Order {
     @Id
-    @SequenceGenerator(
-            name = "order_sequence",
-            sequenceName = "order_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "order_sequence"
-    )
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String product;
     private int quantity;
@@ -22,15 +14,16 @@ public class OrderModel {
     private String side;
     private String uid;
 
-    public OrderModel(Long id, String product, int quantity, double price, String side) {
+    public Order(Long id, String product, int quantity, double price, String side, String uid) {
         this.id = id;
         this.product = product;
         this.quantity = quantity;
         this.price = price;
         this.side = side;
+        this.uid = uid;
     }
 
-    public OrderModel() {}
+    public Order() {}
 
     public Long getId() {
         return id;
@@ -72,18 +65,19 @@ public class OrderModel {
         this.side = side;
     }
 
-    public String getuid() {
+    public String getUid() {
         return uid;
     }
 
-    public void setuid(String uid) {
+    public void setUid(String uid) {
         this.uid = uid;
     }
 
     @Override
     public String toString() {
-        return "OrderModel{" +
-                "product='" + product + '\'' +
+        return "Order{" +
+                "id=" + id +
+                ", product='" + product + '\'' +
                 ", quantity=" + quantity +
                 ", price=" + price +
                 ", side='" + side + '\'' +
